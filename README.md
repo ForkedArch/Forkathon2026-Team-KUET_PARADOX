@@ -1,17 +1,16 @@
 <img src="https://i.ibb.co.com/7NrtB6Vv/image.png" />
 
-# Forkathon 2026: [Your Project Name] by [Your Team Name]
+# Forkathon 2026: [Your Project Name] by KUET_PARADOX
 
 > Built for ForkedArch Freshers Hackathon 2026
 
 ## 👥 Teama
 
-| Name     | Roll     | Department | GitHub    |
-| -------- | -------- | ---------- | --------- |
-| Member 1 | 2K25XXXX | CSE        | @username |
-| Member 2 | 2K25XXXX | CSE        | @username |
-| Member 3 | 2K25XXXX | CSE        | @username |
-| Member 4 | 2K25XXXX | CSE        | @username |
+| Name | Roll | Department | GitHub |
+| ---- | ---- | ---------- | ------ |
+| Mahir Tajwar | 2507074 | CSE | [@tjmahir609-xyz](https://github.com/tjmahir609-xyz) |
+| Abrar Jawar | 2507080 | CSE | [@abrarjawer09-glitch](https://github.com/abrarjawer09-glitch) |
+| Joydeep Chowdhury | 2507087 | CSE | [@chowdhury52507087](https://github.com/chowdhury52507087) |
 
 ---
 
@@ -21,7 +20,7 @@
 
 > Replace this section with the problem statement assigned to your team.
 
-### 🤔 [TEAM NAME]'s Understanding
+### 🤔 KUET_PARADOX's Understanding
 
 Explain the problem in your own words. You may say a story mentioning your team member names!
 
@@ -64,6 +63,4 @@ Backend / API
   ├── Database
   │
   └── External Services
-```
 
-<b>Forkathon: Freshers Hackathon 2026 presented by ForkedArch powered by XtendArena</b>
