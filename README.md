@@ -184,19 +184,53 @@ more effectively when a deadline is approaching.
      
      Final features should only be listed after implementation.
      ========================================================= -->
+**************
+**************
+######✨ Key Features
+**************
+*************
 
-## ✨ Key Features
+### 🚨 1. Emergency Dashboard
 
-<!--
-  Features will be updated according to the features that are
-  actually implemented in the final project.
--->
+A centralized dashboard that shows the most important project information at a glance, especially when the submission deadline is approaching.
 
-<!-- =========================================================
-     SYSTEM WORKFLOW
-     
-     This will be filled after the actual system flow is finalized.
-     ========================================================= -->
+### ✅ 2. Smart Submission Checklist
+
+A smart checklist that helps the team verify all essential submission requirements and prevents important steps from being forgotten.
+
+### 👥 3. Responsibility Board
+
+Clearly assigns responsibilities to team members so everyone knows **who is responsible for which task** and reduces confusion during the final moments.
+
+### 📁 4. Final File Guardian
+
+Helps the team identify and track the correct final project file and its latest version, reducing the risk of submitting an outdated or incorrect file.
+
+### 🚨 5. Emergency Mode
+
+A focused mode designed for high-pressure situations. It highlights only the most urgent tasks and important actions so the team can concentrate on completing the submission.
+
+### 📊 6. Deadline Risk Meter
+
+Shows the current submission risk using three simple levels:
+
+* 🟢 **SAFE** — Enough time remains and critical tasks are under control.
+* 🟡 **WARNING** — The deadline is getting close and some important tasks need attention.
+* 🔴 **CRITICAL** — Immediate action is required to avoid missing the deadline.
+
+### ⬆️ 7. Automatic Task Escalation
+
+Automatically increases the urgency of unfinished tasks as the deadline approaches, helping critical tasks receive attention before less important work.
+
+### 🆘 8. Team Panic Button
+
+A quick emergency action that alerts the team that immediate coordination is required and brings attention to the most critical pending actions.
+
+### 🎯 9. Submission Readiness Score
+
+Provides a simple score representing how ready the project is for submission. The score is calculated from factors such as completed tasks, checklist status, final-file availability, and remaining critical issues.
+
+> **Core Idea:** KUET_PARADOX is designed to turn a chaotic last-minute submission situation into a clear, prioritized, and coordinated workflow.
 
 ## 🔄 System Workflow
 
