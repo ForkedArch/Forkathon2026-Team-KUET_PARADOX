@@ -184,6 +184,15 @@ more effectively when a deadline is approaching.
      
      Final features should only be listed after implementation.
      ========================================================= -->
+
+
+
+
+
+
+
+
+     
 **************
 **************
 ######✨ Key Features
@@ -232,33 +241,184 @@ Provides a simple score representing how ready the project is for submission. Th
 
 > **Core Idea:** KUET_PARADOX is designed to turn a chaotic last-minute submission situation into a clear, prioritized, and coordinated workflow.
 
+
+
+
+
+
+**********************
+********************
+********************
 ## 🔄 System Workflow
+*********************
+********************
 
-<!--
-  The complete workflow will be added after the system is
-  implemented and the actual user flow is finalized.
--->
+The system follows a deadline-focused workflow designed to help a team move from normal project management to emergency submission mode when necessary.
 
-<!-- =========================================================
-     SYSTEM ARCHITECTURE
-     
-     Architecture will be added after we finalize how the
-     frontend, backend, database and other components work.
-     ========================================================= -->
+```text
+👥 TEAM MEMBERS
+       │
+       ▼
+📊 OPEN EMERGENCY DASHBOARD
+       │
+       ▼
+⏱️ CHECK REMAINING DEADLINE
+       │
+       ▼
+📋 CHECK TASKS & RESPONSIBILITIES
+       │
+       ▼
+📊 DEADLINE RISK METER
+       │
+       ├───────────────┐
+       │               │
+       ▼               ▼
+    🟢 SAFE       🟡 WARNING
+       │               │
+       │               ▼
+       │       ⬆️ TASK ESCALATION
+       │               │
+       └───────┬───────┘
+               │
+               ▼
+          🔴 CRITICAL
+               │
+               ▼
+        🚨 EMERGENCY MODE
+               │
+        ┌──────┴──────┐
+        ▼             ▼
+   🆘 PANIC       🎯 PRIORITIZE
+    BUTTON           TASKS
+        │             │
+        └──────┬──────┘
+               ▼
+        ✅ SMART CHECKLIST
+               │
+               ▼
+       📁 FINAL FILE GUARDIAN
+               │
+               ▼
+       🎯 READINESS SCORE
+               │
+               ▼
+       🚀 READY TO SUBMIT
+```
 
+### Workflow Steps
+
+1. **Team Members Enter the Dashboard**
+   Team members open the emergency dashboard to see the current project status.
+
+2. **Deadline is Checked**
+   The system monitors the remaining time before the submission deadline.
+
+3. **Tasks and Responsibilities are Reviewed**
+   The team checks pending tasks and identifies who is responsible for each task.
+
+4. **Deadline Risk is Evaluated**
+   The Deadline Risk Meter determines whether the project is **SAFE, WARNING, or CRITICAL**.
+
+5. **Tasks are Escalated When Necessary**
+   As the deadline approaches, unfinished important tasks automatically receive higher urgency.
+
+6. **Emergency Mode is Activated**
+   When the situation becomes critical, Emergency Mode focuses the team on the most important remaining actions.
+
+7. **Team Panic Button Can Be Used**
+   If immediate team coordination is required, the Panic Button brings attention to the emergency situation.
+
+8. **Submission Checklist is Verified**
+   The Smart Checklist ensures that important submission requirements have been completed.
+
+9. **Final File is Verified**
+   The Final File Guardian helps confirm that the correct final project file and version are ready.
+
+10. **Submission Readiness is Calculated**
+    The system calculates a Submission Readiness Score based on the current project state.
+
+11. **Team Proceeds to Submission**
+    When critical tasks are completed and the readiness level is sufficient, the team can proceed with the final submission.
+
+*******************
+******************
 ## 🏗️ System Architecture
+## 🏗️ System Architecture
+********************
+*******************
 
-<!--
-  Architecture will be completed after the technical structure
-  of the project is finalized.
--->
+KUET_PARADOX follows a **Frontend → Backend → Database & File Storage** architecture. The frontend provides the user interface, the backend manages the core application logic, and Supabase provides persistent data and file storage.
 
-<!-- =========================================================
-     DATABASE
-     
-     KEEPING THIS PART AS THE ORIGINAL TEMPLATE REQUESTED.
-     We will complete it after database implementation.
-     ========================================================= -->
+```text
+                         👥 TEAM MEMBERS
+                               │
+                               ▼
+                ┌────────────────────────────┐
+                │          FRONTEND          │
+                │         React + Vite       │
+                │                            │
+                │  • Emergency Dashboard     │
+                │  • Smart Checklist         │
+                │  • Responsibility Board    │
+                │  • Final File Guardian     │
+                │  • Emergency Mode          │
+                │  • Deadline Risk Meter     │
+                │  • Team Panic Button       │
+                │  • Submission Readiness    │
+                └─────────────┬──────────────┘
+                              │
+                              │ API Requests
+                              ▼
+                ┌────────────────────────────┐
+                │          BACKEND           │
+                │       Node + Express       │
+                │                            │
+                │  • Task Logic              │
+                │  • Responsibility Logic    │
+                │  • Deadline Logic          │
+                │  • Risk Engine             │
+                │  • Task Escalation        │
+                │  • Checklist Logic        │
+                │  • File Logic              │
+                │  • Readiness Calculation   │
+                │  • Emergency Logic         │
+                └─────────────┬──────────────┘
+                              │
+                 ┌────────────┴────────────┐
+                 ▼                         ▼
+       ┌─────────────────────┐   ┌─────────────────────┐
+       │       DATABASE      │   │     FILE STORAGE     │
+       │       Supabase      │   │       Supabase       │
+       │      PostgreSQL     │   │       Storage        │
+       │                     │   │                      │
+       │  • Team Members     │   │  • Project Files     │
+       │  • Tasks            │   │  • Final Files       │
+       │  • Responsibilities │   │  • File Versions     │
+       │  • Checklists       │   │                      │
+       │  • Deadlines        │   │                      │
+       │  • Project Status   │   │                      │
+       └─────────────────────┘   └─────────────────────┘
+```
+
+### 🧩 Main Components
+
+| Component        | Technology          | Responsibility                                 |
+| ---------------- | ------------------- | ---------------------------------------------- |
+| Frontend         | React + Vite        | User interface and dashboard                   |
+| Backend          | Node.js + Express   | API and application logic                      |
+| Risk Engine      | Backend Logic       | Determines SAFE, WARNING, or CRITICAL status   |
+| Task Escalation  | Backend Logic       | Increases urgency of unfinished critical tasks |
+| Database         | Supabase PostgreSQL | Stores project and team data                   |
+| File Storage     | Supabase Storage    | Stores project and final files                 |
+| Emergency System | Frontend + Backend  | Handles Emergency Mode and Panic Button        |
+| Readiness Engine | Backend Logic       | Calculates Submission Readiness Score          |
+
+### 🔗 Component Relationship
+
+The **Frontend** communicates with the **Backend** through API requests. The Backend processes the application's business logic and communicates with the **Supabase PostgreSQL database** for structured data and **Supabase Storage** for project files.
+
+The processed information is then returned to the Frontend and displayed to the team through the dashboard.
+
 
 ## 🗄️ Database Structure
 
@@ -266,12 +426,6 @@ Provides a simple score representing how ready the project is for submission. Th
 Database
 ```
 
-<!-- =========================================================
-     EXTERNAL SERVICES
-     
-     KEEPING THIS PART AS THE ORIGINAL TEMPLATE REQUESTED.
-     We will add actual services only if we use them.
-     ========================================================= -->
 
 ## 🔗 External Services
 
