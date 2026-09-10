@@ -1,7 +1,7 @@
 # Dependencies
 node_modules/
 
-# Environment Variables (Secret Keys)
+# Environment Variables
 .env
 .env.local
 
