@@ -1,41 +1,103 @@
-// GET deadline information
-const getDeadline = (req, res) => {
-  const now = new Date();
+const { createClient } = require("@supabase/supabase-js");
+require("dotenv").config();
 
-  // Bangladesh Time (UTC + 6)
-  const bangladeshNow = new Date(
-    now.getTime() + 6 * 60 * 60 * 1000
-  );
+// Direct Supabase Initialization
+const supabaseUrl = process.env.SUPABASE_URL || "";
+const supabaseKey = process.env.SUPABASE_ANON_KEY || "";
+const supabase = createClient(supabaseUrl, supabaseKey);
 
-  // Today's deadline: 11:59 PM Bangladesh time
-  const deadline = new Date(bangladeshNow);
+// GET all deadlines
+const getDeadlines = async (req, res) => {
+  try {
+    const { data, error } = await supabase
+      .from('deadlines')
+      .select('*')
+      .order('created_at', { ascending: true });
 
-  deadline.setHours(23, 59, 0, 0);
+    if (error) {
+      return res.status(500).json({ success: false, message: error.message });
+    }
 
-  // If today's deadline has passed,
-  // use tomorrow's 11:59 PM
-  if (deadline <= bangladeshNow) {
-    deadline.setDate(deadline.getDate() + 1);
+    res.json({
+      success: true,
+      deadlines: data
+    });
+  } catch (err) {
+    res.status(500).json({ success: false, message: err.message });
   }
+};
 
-  const remainingSeconds = Math.max(
-    0,
-    Math.floor((deadline - bangladeshNow) / 1000)
-  );
+// ADD new deadline
+const addDeadline = async (req, res) => {
+  try {
+    const { data, error } = await supabase
+      .from('deadlines')
+      .insert([req.body])
+      .select();
 
-  const remainingMinutes = Math.floor(
-    remainingSeconds / 60
-  );
+    if (error) {
+      return res.status(500).json({ success: false, message: error.message });
+    }
 
-  res.json({
-    success: true,
-    deadline: deadline.toISOString(),
-    currentTime: bangladeshNow.toISOString(),
-    remainingSeconds: remainingSeconds,
-    remainingMinutes: remainingMinutes
-  });
+    res.status(201).json({
+      success: true,
+      deadline: data[0]
+    });
+  } catch (err) {
+    res.status(500).json({ success: false, message: err.message });
+  }
+};
+
+// UPDATE deadline
+const updateDeadline = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { data, error } = await supabase
+      .from('deadlines')
+      .update(req.body)
+      .eq('id', id)
+      .select();
+
+    if (error) {
+      return res.status(500).json({ success: false, message: error.message });
+    }
+
+    res.json({
+      success: true,
+      deadline: data[0]
+    });
+  } catch (err) {
+    res.status(500).json({ success: false, message: err.message });
+  }
+};
+
+// DELETE deadline
+const deleteDeadline = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { error } = await supabase
+      .from('deadlines')
+      .delete()
+      .eq('id', id);
+
+    if (error) {
+      return res.status(500).json({ success: false, message: error.message });
+    }
+
+    res.json({
+      success: true,
+      message: "Deadline deleted successfully"
+    });
+  } catch (err) {
+    res.status(500).json({ success: false, message: err.message });
+  }
 };
 
 module.exports = {
-  getDeadline
+  getDeadlines,
+  getDeadline: getDeadlines,
+  addDeadline,
+  createDeadline: addDeadline,
+  updateDeadline,
+  deleteDeadline
 };

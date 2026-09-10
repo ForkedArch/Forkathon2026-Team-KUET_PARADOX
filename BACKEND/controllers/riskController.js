@@ -1,85 +1,103 @@
-const { tasks, checklist, teamMembers, files } = require("../data/temporaryData");
+const { createClient } = require("@supabase/supabase-js");
+require("dotenv").config();
 
-const { calculateRisk } = require("../services/riskEngine");
+// Direct Supabase Initialization
+const supabaseUrl = process.env.SUPABASE_URL || "";
+const supabaseKey = process.env.SUPABASE_ANON_KEY || "";
+const supabase = createClient(supabaseUrl, supabaseKey);
 
-const getRisk = (req, res) => {
+// GET all risks
+const getRisks = async (req, res) => {
+  try {
+    const { data, error } = await supabase
+      .from('risks')
+      .select('*')
+      .order('created_at', { ascending: true });
 
-  const now = new Date();
-
-  const bangladeshNow = new Date(
-    now.getTime() + 6 * 60 * 60 * 1000
-  );
-
-  const deadline = new Date(bangladeshNow);
-
-  deadline.setHours(23, 59, 0, 0);
-
-  if (deadline <= bangladeshNow) {
-    deadline.setDate(deadline.getDate() + 1);
-  }
-
-  const remainingSeconds = Math.max(
-    0,
-    Math.floor((deadline - bangladeshNow) / 1000)
-  );
-
-  const remainingMinutes = Math.floor(
-    remainingSeconds / 60
-  );
-
-  const highPriorityTasks = tasks.filter(
-    (task) =>
-      task.priority === "High" &&
-      task.status !== "Completed"
-  ).length;
-
-  const unavailableMembers = teamMembers.filter(
-    (member) =>
-      member.status !== "Available"
-  ).length;
-
-  const finalFileReady = files.length > 0;
-
-  const completedChecklist = checklist.filter(
-    (item) => item.completed === true
-  ).length;
-
-  const checklistProgress =
-    checklist.length === 0
-      ? 100
-      : (completedChecklist / checklist.length) * 100;
-
-  const submitterAvailable = teamMembers.some(
-    (member) =>
-      member.role === "Submitter" &&
-      member.status === "Available"
-  );
-
-  const risk = calculateRisk({
-    remainingMinutes,
-    highPriorityTasks,
-    unavailableMembers,
-    finalFileReady,
-    checklistProgress,
-    submitterAvailable
-  });
-
-  res.json({
-    success: true,
-    score: risk.score,
-    level: risk.level,
-    message: risk.message,
-    details: {
-      remainingMinutes,
-      highPriorityTasks,
-      unavailableMembers,
-      finalFileReady,
-      checklistProgress: Math.round(checklistProgress),
-      submitterAvailable
+    if (error) {
+      return res.status(500).json({ success: false, message: error.message });
     }
-  });
+
+    res.json({
+      success: true,
+      risks: data
+    });
+  } catch (err) {
+    res.status(500).json({ success: false, message: err.message });
+  }
+};
+
+// ADD new risk
+const addRisk = async (req, res) => {
+  try {
+    const { data, error } = await supabase
+      .from('risks')
+      .insert([req.body])
+      .select();
+
+    if (error) {
+      return res.status(500).json({ success: false, message: error.message });
+    }
+
+    res.status(201).json({
+      success: true,
+      risk: data[0]
+    });
+  } catch (err) {
+    res.status(500).json({ success: false, message: err.message });
+  }
+};
+
+// UPDATE risk
+const updateRisk = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { data, error } = await supabase
+      .from('risks')
+      .update(req.body)
+      .eq('id', id)
+      .select();
+
+    if (error) {
+      return res.status(500).json({ success: false, message: error.message });
+    }
+
+    res.json({
+      success: true,
+      risk: data[0]
+    });
+  } catch (err) {
+    res.status(500).json({ success: false, message: err.message });
+  }
+};
+
+// DELETE risk
+const deleteRisk = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { error } = await supabase
+      .from('risks')
+      .delete()
+      .eq('id', id);
+
+    if (error) {
+      return res.status(500).json({ success: false, message: error.message });
+    }
+
+    res.json({
+      success: true,
+      message: "Risk deleted successfully"
+    });
+  } catch (err) {
+    res.status(500).json({ success: false, message: err.message });
+  }
 };
 
 module.exports = {
-  getRisk
+  getRisks,
+  getRisk: getRisks,
+  addRisk,
+  createRisk: addRisk,
+  updateRisk,
+  deleteRisk
 };

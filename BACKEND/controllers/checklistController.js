@@ -1,40 +1,104 @@
-const { checklist } = require("../data/temporaryData");
+const { createClient } = require("@supabase/supabase-js");
+require("dotenv").config();
 
-// GET all checklist items
-const getChecklist = (req, res) => {
-  res.json({
-    success: true,
-    checklist: checklist
-  });
-};
+// Direct Supabase Initialization
+const supabaseUrl = process.env.SUPABASE_URL || "";
+const supabaseKey = process.env.SUPABASE_ANON_KEY || "";
+const supabase = createClient(supabaseUrl, supabaseKey);
 
-// UPDATE checklist item
-const updateChecklist = (req, res) => {
-  const id = Number(req.params.id);
+// GET all checklists
+const getChecklists = async (req, res) => {
+  try {
+    const { data, error } = await supabase
+      .from('checklists')
+      .select('*')
+      .order('created_at', { ascending: true });
 
-  const item = checklist.find((item) => item.id === id);
+    if (error) {
+      return res.status(500).json({ success: false, message: error.message });
+    }
 
-  if (!item) {
-    return res.status(404).json({
-      success: false,
-      message: "Checklist item not found"
+    res.json({
+      success: true,
+      checklists: data
     });
+  } catch (err) {
+    res.status(500).json({ success: false, message: err.message });
   }
-
-  const { completed } = req.body;
-
-  if (completed !== undefined) {
-    item.completed = completed;
-  }
-
-  res.json({
-    success: true,
-    message: "Checklist updated successfully",
-    checklistItem: item
-  });
 };
 
+// ADD new checklist
+const addChecklist = async (req, res) => {
+  try {
+    const { data, error } = await supabase
+      .from('checklists')
+      .insert([req.body])
+      .select();
+
+    if (error) {
+      return res.status(500).json({ success: false, message: error.message });
+    }
+
+    res.status(201).json({
+      success: true,
+      checklist: data[0]
+    });
+  } catch (err) {
+    res.status(500).json({ success: false, message: err.message });
+  }
+};
+
+// UPDATE checklist
+const updateChecklist = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { data, error } = await supabase
+      .from('checklists')
+      .update(req.body)
+      .eq('id', id)
+      .select();
+
+    if (error) {
+      return res.status(500).json({ success: false, message: error.message });
+    }
+
+    res.json({
+      success: true,
+      checklist: data[0]
+    });
+  } catch (err) {
+    res.status(500).json({ success: false, message: err.message });
+  }
+};
+
+// DELETE checklist
+const deleteChecklist = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { error } = await supabase
+      .from('checklists')
+      .delete()
+      .eq('id', id);
+
+    if (error) {
+      return res.status(500).json({ success: false, message: error.message });
+    }
+
+    res.json({
+      success: true,
+      message: "Checklist deleted successfully"
+    });
+  } catch (err) {
+    res.status(500).json({ success: false, message: err.message });
+  }
+};
+
+// Exporting with aliases to prevent any route mismatch
 module.exports = {
-  getChecklist,
-  updateChecklist
+  getChecklists,
+  getChecklist: getChecklists,
+  addChecklist,
+  createChecklist: addChecklist,
+  updateChecklist,
+  deleteChecklist
 };
