@@ -1,0 +1,28 @@
+// 1. Import dependencies
+const express = require('express');
+const cors = require('cors');
+require('dotenv').config();
+const { createClient } = require('@supabase/supabase-js');
+
+// 2. Initialize the Express app
+const app = express();
+const PORT = process.env.PORT || 5000;
+
+// 3. Middleware (This allows your frontend to talk to your backend)
+app.use(cors());
+app.use(express.json());
+
+// 4. Initialize Supabase (You will need to create a .env file for these keys later)
+const supabaseUrl = process.env.SUPABASE_URL;
+const supabaseKey = process.env.SUPABASE_ANON_KEY;
+// const supabase = createClient(supabaseUrl, supabaseKey); // Uncomment this once you have your .env file set up
+
+// 5. Basic Test Route
+app.get('/', (req, res) => {
+  res.send('KUET_PARADOX Backend is running successfully!');
+});
+
+// 6. Start the server
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
