@@ -7,6 +7,12 @@
 [![Live Demo](https://img.shields.io/badge/Live%20Demo-Vercel-black?logo=vercel)](https://forkathon2026-team-kuet-paradox-7swmmqapj-tjmahir609-xyz.vercel.app/)
 [![GitHub](https://img.shields.io/badge/GitHub-Repository-black?logo=github)](https://github.com/ForkedArch/Forkathon2026-Team-KUET_PARADOX)
 
+
+presentational video is here ::::
+
+https://youtu.be/3XxYbhboHIQ?si=MHAAhTz6sk2cmipf
+
+
 ### 🌐 Live Demo
 
 **Frontend:**
