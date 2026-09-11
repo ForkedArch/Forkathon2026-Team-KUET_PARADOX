@@ -1,20 +1,26 @@
 const express = require("express");
-
 const router = express.Router();
+const multer = require("multer");
 
-const {
-  getFiles,
-  addFile,
-  updateFile,
-  deleteFile
-} = require("../controllers/fileController");
+// Absolute-style relative path to bypass directory confusion
+const path = require("path");
+const supabase = require(path.join(__dirname, "../config/supabase"));
 
-router.get("/", getFiles);
+// Set up multer to store uploaded files in memory temporarily
+const upload = multer({ storage: multer.memoryStorage() });
 
-router.post("/", addFile);
 
-router.put("/:id", updateFile);
 
-router.delete("/:id", deleteFile);
+
+// 1. GET Route: Fetch all uploaded files from Supabase database
+router.get("/", async (req, res) => {
+  try {
+    const { data, error } = await supabase.from("files").select("*");
+    if (error) throw error;
+    res.json(data);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
 
 module.exports = router;
