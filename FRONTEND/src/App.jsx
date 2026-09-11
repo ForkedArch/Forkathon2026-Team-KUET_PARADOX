@@ -2,7 +2,10 @@ import { useEffect, useState } from "react";
 
 import "./App.css";
 
+import { getTasks, getTeam, getChecklist, getDeadline, getRisk, getReadiness, addTask, updateTask, deleteTask } from './api.js';
 
+
+import ReadinessDashboard from "./ReadinessCard";
 // =========================================================
 // RISK METER COMPONENT
 // This component receives the calculated risk information
@@ -75,6 +78,51 @@ function RiskMeter({ riskInfo }) {
 function App() {
 
 
+
+  
+  const handleAddNewTask = async (e) => {
+    e.preventDefault();
+    const result = await addTask(newTask);
+    if (result.success) {
+      
+      const updatedTasks = await getTasks();
+      if (updatedTasks.success) setTasks(updatedTasks.tasks);
+      
+      
+      setNewTask({ title: "", assignedTo: "", priority: "Medium", deadline: "" });
+      alert("added successfully");
+    } else {
+      alert("find problem to add task");
+    }
+  };
+
+ const getRisk = async () => {
+  try {
+    const res = await fetch(`${API_BASE_URL}/risk`);
+    return await res.json();
+  } catch (err) { return { success: false, risk: [] }; }
+};
+
+const getReadiness = async () => {
+  try {
+    const res = await fetch(`${API_BASE_URL}/readiness`);
+    return await res.json();
+  } catch (err) {
+    return { success: false, readiness: {} };
+  }
+};
+
+const handleDeleteTask = async (id) => {
+    const result = await deleteTask(id);
+    if (result.success) {
+      
+      const updatedTasks = await getTasks();
+      if (updatedTasks.success) setTasks(updatedTasks.tasks);
+    } else {
+      alert("find problem to delete task");
+    }
+  };
+
   // =========================================================
   // ACTIVE PAGE
   // Controls which section is currently visible.
@@ -141,28 +189,21 @@ function App() {
 
   ]);
 
-
-  // =========================================================
+// =========================================================
   // NEW MEMBER FORM
   // =========================================================
 
   const [newMember, setNewMember] = useState({
-
     name: "",
-
     role: "",
-
     status: "Available",
-
   });
 
-
   // =========================================================
-  // TASKS
+  // TASKS & API DATA LOADING
   // =========================================================
 
   const [tasks, setTasks] = useState([
-
     {
       id: 1,
       title: "Complete frontend",
@@ -171,7 +212,6 @@ function App() {
       status: "Pending",
       deadline: "11:30 PM",
     },
-
     {
       id: 2,
       title: "Create README",
@@ -180,7 +220,6 @@ function App() {
       status: "Completed",
       deadline: "10:30 PM",
     },
-
     {
       id: 3,
       title: "Test final submission",
@@ -189,7 +228,6 @@ function App() {
       status: "Pending",
       deadline: "11:45 PM",
     },
-
     {
       id: 4,
       title: "Upload Final File",
@@ -198,26 +236,43 @@ function App() {
       status: "Pending",
       deadline: "11:50 PM",
     },
-
   ]);
 
+  useEffect(() => {
+    async function loadAllDashboardData() {
+      const tasksData = await getTasks();
+      if (tasksData.success) setTasks(tasksData.tasks);
+
+      const teamData = await getTeam();
+
+      if (teamData.success) setTeam(teamData.team);
+
+      const checkData = await getChecklist();
+      if (checkData.success) setChecklist(checkData.checklist);
+
+      const deadlineData = await getDeadline();
+      if (deadlineData.success) setDeadlines(deadlineData.deadlines);
+
+      const riskData = await getRisk();
+      if (riskData.success) setRisk(riskData.risk);
+
+      const readyData = await getReadiness();
+      if (readyData.success) setReadiness(readyData.readiness);
+    }
+
+    loadAllDashboardData();
+  }, []);
 
   // =========================================================
   // NEW TASK FORM
   // =========================================================
 
   const [newTask, setNewTask] = useState({
-
     title: "",
-
     assignedTo: "",
-
     priority: "Medium",
-
     deadline: "",
-
   });
-
 
   // =========================================================
   // SMART CHECKLIST
@@ -485,6 +540,10 @@ function App() {
 
 
     setTasks((previousTasks) => [
+
+
+
+
 
       ...previousTasks,
 
@@ -776,7 +835,7 @@ function App() {
   const submitter = teamMembers.find((member) => {
 
     const role =
-      member.role.toLowerCase();
+      member.role?.toLowerCase();
 
     return (
 
@@ -1153,13 +1212,10 @@ function App() {
   // PANIC BUTTON
   // Activates Emergency Mode and displays an alert.
   // =========================================================
-
-  function activatePanic() {
-
+async function activatePanic() {
     setPanicActive(true);
-
     setActivePage("Emergency Mode");
-
+    await triggerPanic();
   }
 
 
@@ -1247,15 +1303,15 @@ function App() {
               </button>
 
 
-              <button
+             <button
                 className="emergency-button"
-                onClick={() =>
-                  setActivePage("Emergency Mode")
-                }
+                onClick={async () => {
+                  setActivePage("Emergency Mode");
+                  await handleActivateEmergency();
+                }}
               >
                 🚨 Emergency Mode
               </button>
-
             </div>
 
           </div>
@@ -1866,7 +1922,7 @@ function App() {
                       <span
                         className={
                           "priority priority-" +
-                          task.priority.toLowerCase()
+                          task.priority?.toLowerCase()
                         }
                       >
                         {task.priority}
@@ -2648,32 +2704,51 @@ function App() {
             </div>
 
           </div>
+{/* ================================================= */}
+          {/* EMERGENCY COMMAND CENTER CONTROLS & PANIC ALERT   */}
+          {/* ================================================= */}
+          <div className="emergency-control-section" style={{ padding: "20px", background: "#1e1e1e", borderRadius: "8px", margin: "20px 0" }}>
+            <h3 style={{ color: "#ff4d4d", marginBottom: "15px" }}>🚨 Emergency Command Center</h3>
+            
+            <div style={{ display: "flex", gap: "10px", flexWrap: "wrap", marginBottom: "15px" }}>
+              <button 
+                onClick={handleActivateEmergency}
+                style={{ background: "#d9534f", color: "white", border: "none", padding: "10px 16px", borderRadius: "5px", cursor: "pointer", fontWeight: "bold" }}
+              >
+                Activate Emergency
+              </button>
 
+              <button 
+                onClick={handleDeactivateEmergency}
+                style={{ background: "#5cb85c", color: "white", border: "none", padding: "10px 16px", borderRadius: "5px", cursor: "pointer", fontWeight: "bold" }}
+              >
+                Deactivate Emergency
+              </button>
 
-          {panicActive && (
-
-            <div className="panic-alert emergency-panic">
-
-              <div className="panic-alert-icon">
-                ⚠️
-              </div>
-
-              <div>
-
-                <strong>
-                  TEAM PANIC ALERT
-                </strong>
-
-                <p>
-                  Emergency mode activated.
-                  Critical tasks must be handled now.
-                </p>
-
-              </div>
-
+              <button 
+                onClick={activatePanic}
+                style={{ background: "#f0ad4e", color: "black", border: "none", padding: "10px 16px", borderRadius: "5px", cursor: "pointer", fontWeight: "bold" }}
+              >
+                Trigger Panic Mode
+              </button>
             </div>
 
-          )}
+            {panicActive && (
+              <div className="panic-alert emergency-panic" style={{ display: "flex", alignItems: "center", gap: "15px", background: "#442222", border: "1px solid #ff4d4d", padding: "15px", borderRadius: "6px" }}>
+                <div className="panic-alert-icon" style={{ fontSize: "24px" }}>
+                  ⚠️
+                </div>
+                <div>
+                  <strong style={{ color: "#ff9999", display: "block", marginBottom: "5px" }}>
+                    TEAM PANIC ALERT
+                  </strong>
+                  <p style={{ margin: 0, color: "#ffcccc" }}>
+                    Emergency mode activated. Critical tasks must be handled now.
+                  </p>
+                </div>
+              </div>
+            )}
+          </div>
 
 
           <div className="immediate-actions">
