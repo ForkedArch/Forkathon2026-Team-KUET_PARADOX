@@ -1,11 +1,19 @@
-<img src="https://i.ibb.co.com/7NrtB6Vv/image.png" />
+<img src="https://i.ibb.co.com/7NrtB6Vv/image.png" alt="KUET_PARADOX" />
 
 # Forkathon 2026: Five Minutes Before the Deadline by KUET_PARADOX
 
 > **Built for ForkedArch Freshers Hackathon 2026**
 
-🌐 **Live Demo:** https://forkathon2026-team-kuet-paradox.vercel.app/
-📦 **GitHub Repository:** https://github.com/ForkedArch/Forkathon2026-Team-KUET_PARADOX
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Vercel-black?logo=vercel)](https://forkathon2026-team-kuet-paradox-7swmmqapj-tjmahir609-xyz.vercel.app/)
+[![GitHub](https://img.shields.io/badge/GitHub-Repository-black?logo=github)](https://github.com/ForkedArch/Forkathon2026-Team-KUET_PARADOX)
+
+### 🌐 Live Demo
+
+**Frontend:**
+https://forkathon2026-team-kuet-paradox-7swmmqapj-tjmahir609-xyz.vercel.app
+
+**GitHub Repository:**
+https://github.com/ForkedArch/Forkathon2026-Team-KUET_PARADOX
 
 ---
 
@@ -44,9 +52,9 @@ The team starts asking:
 * What should be checked first?
 * Are we actually ready to submit?
 
-The team may have completed the project technically, but confusion, stress, missing information, and unclear responsibilities can still cause the final submission to fail.
+The project may be technically complete, but confusion, stress, missing information, and unclear responsibilities can still cause the final submission to fail.
 
-The challenge is therefore not only about completing the project.
+The challenge is therefore not only about completing a project.
 
 It is about **coordination under extreme deadline pressure**.
 
@@ -60,9 +68,9 @@ We understand the problem as a **last-minute coordination failure**.
 
 Imagine a situation involving our three team members: **Mahir, Abrar, and Joydeep**.
 
-Mahir has completed most of his assigned work and believes that the project is almost ready.
+Mahir has completed most of his assigned work and believes the project is almost ready.
 
-Abrar has worked on another part of the project and has a project file on his computer. However, multiple versions exist, so it is not immediately clear which one is the latest.
+Abrar has worked on another part of the project and has a project file on his computer. However, there are multiple versions of the file, so it is not immediately clear which one is the latest.
 
 Joydeep is ready to handle the final submission.
 
@@ -80,7 +88,7 @@ Then Joydeep asks:
 
 > "Who is actually submitting the project?"
 
-At the same time, another team member notices that the README is incomplete, while an important task is still pending.
+At the same time, another team member notices that the README is incomplete and another important task is still pending.
 
 Now the team starts spending valuable time discussing:
 
@@ -102,7 +110,7 @@ A team working under a strict deadline needs to know immediately:
 1. What has already been completed?
 2. What is still pending?
 3. Who is responsible for each task?
-4. Which file/version should be used?
+4. Which file or version should be used?
 5. Who is responsible for final submission?
 6. What still needs to be checked?
 7. What should be done first?
@@ -129,11 +137,25 @@ That is the problem KUET_PARADOX aims to solve.
 
 **KUET_PARADOX** is a deadline-focused team coordination system designed to transform chaotic last-minute project submission into a **clear, prioritized, and coordinated workflow**.
 
-Instead of searching through chats, files, personal notes, and conversations during the final minutes, a team can use one centralized emergency workspace to understand:
+Instead of searching through chats, files, personal notes, and separate conversations during the final minutes, a team can use one centralized emergency workspace to understand:
 
 > **What is done → What is pending → Who owns it → What is urgent → What happens next.**
 
-The system combines project coordination, task management, deadline monitoring, risk analysis, submission verification, file tracking, and emergency communication in one place.
+The system combines:
+
+* task management,
+* responsibility assignment,
+* deadline monitoring,
+* risk evaluation,
+* task escalation,
+* submission checklist verification,
+* final-file tracking,
+* emergency coordination,
+* and submission-readiness calculation.
+
+The goal is not to give the team more information.
+
+The goal is to make the **next action obvious**.
 
 ---
 
@@ -154,22 +176,22 @@ It brings together:
 * emergency status,
 * and submission readiness.
 
-The goal is to reduce information overload during high-pressure situations.
+The dashboard is designed specifically for stressed, distracted users who need the most important information immediately.
 
 ---
 
 ## ✅ 2. Smart Submission Checklist
 
-A dedicated checklist helps the team verify essential submission requirements.
+A dedicated checklist helps the team verify important submission requirements.
 
 Example checks include:
 
 * README added
-* Public repository/drive link verified
-* File size under the allowed limit
+* Repository/public link verified
+* File size checked
 * Demo video/link included
 
-Checklist state can be updated through the backend and persisted in the database.
+Checklist state can be updated through the backend and stored persistently.
 
 ---
 
@@ -177,30 +199,30 @@ Checklist state can be updated through the backend and persisted in the database
 
 The Responsibility Board makes task ownership explicit.
 
-Each task can be associated with a team member so the team can immediately answer:
+Every important task can have a responsible team member.
 
-> **Who is responsible for this task?**
+This allows the team to immediately answer:
 
-This reduces the common last-minute confusion of:
+> **Who is responsible for this?**
 
-> "I thought you were doing it."
+This reduces last-minute confusion and duplicated work.
 
 ---
 
 ## 📁 4. Final File Guardian
 
-The Final File Guardian helps the team identify the correct final project file.
+The Final File Guardian helps the team identify the correct final project file and its latest version.
 
-It tracks important metadata such as:
+It tracks information such as:
 
 * file name,
 * version,
-* uploader,
+* uploaded by,
 * file URL,
 * final status,
 * update time.
 
-This reduces the risk of submitting an outdated or incorrect version.
+The actual file can be stored using the application's file-storage layer while the database keeps its metadata.
 
 ---
 
@@ -208,21 +230,21 @@ This reduces the risk of submitting an outdated or incorrect version.
 
 Emergency Mode is designed for the final high-pressure stage.
 
-It focuses attention on:
+It focuses the team on:
 
 * critical tasks,
 * urgent checklist items,
+* unresolved issues,
 * final-file readiness,
-* emergency coordination,
 * and immediate submission actions.
 
-The purpose is to reduce cognitive overload and show the team what matters most right now.
+The purpose is to reduce cognitive overload when time is running out.
 
 ---
 
 ## 📊 6. Deadline Risk Meter
 
-The project is represented using three simple risk levels:
+The system represents project risk using three simple levels:
 
 ### 🟢 SAFE
 
@@ -236,43 +258,43 @@ The deadline is approaching and important work needs attention.
 
 Immediate action is required.
 
-The Risk Engine uses project conditions such as deadline pressure and unresolved critical work to determine the current state.
+The risk level is determined by backend application logic using project/deadline conditions.
 
 ---
 
 ## ⬆️ 7. Automatic Task Escalation
 
-Unfinished important work becomes more urgent as the deadline approaches.
+As the deadline becomes more urgent, unfinished important tasks receive stronger attention.
 
-The purpose is to ensure that high-impact unfinished tasks receive attention before lower-priority work.
+This helps the team prioritize high-impact work before lower-priority tasks.
 
 ---
 
 ## 🆘 8. Team Panic Button
 
-The Panic Button provides a fast emergency signal when immediate coordination is needed.
+The Panic Button provides a fast emergency signal.
 
-A panic event can be broadcast to connected team members using the realtime communication layer.
+When immediate coordination is necessary, a teammate can trigger an emergency event rather than relying entirely on manual messaging.
 
-This avoids relying entirely on manual messaging when the deadline is close.
+Realtime communication is handled through the application's Socket.IO layer.
 
 ---
 
 ## 🎯 9. Submission Readiness Score
 
-The system calculates a simple score representing how ready the project is for submission.
+The system calculates a readiness score representing how close the project is to being ready for submission.
 
-The readiness calculation considers project conditions such as:
+The score considers project information such as:
 
-* task completion,
-* checklist progress,
+* completed tasks,
+* checklist completion,
 * final-file availability,
-* team/project state,
-* and remaining critical issues.
+* unresolved critical issues,
+* and current project state.
 
-The result gives the team a single high-level answer:
+The result answers one simple question:
 
-> **"How ready are we to submit right now?"**
+> **How ready are we to submit right now?**
 
 ---
 
@@ -337,31 +359,31 @@ The result gives the team a single high-level answer:
    The system considers the remaining time before submission.
 
 3. **Review Tasks and Responsibilities**
-   The team identifies pending tasks and their owners.
+   The team identifies pending work and its owner.
 
 4. **Evaluate Risk**
    The Risk Meter determines whether the project is SAFE, WARNING, or CRITICAL.
 
 5. **Escalate Important Work**
-   Unfinished high-priority work receives increased urgency.
+   Unfinished high-priority work receives stronger attention.
 
 6. **Activate Emergency Mode**
-   When the situation becomes critical, the interface focuses on urgent actions.
+   When the project becomes critical, the interface focuses on urgent actions.
 
 7. **Use Panic Button When Necessary**
-   The team can trigger an emergency coordination signal.
+   The team can trigger an emergency coordination event.
 
 8. **Verify Submission Checklist**
-   Important submission requirements are checked.
+   Important requirements are checked.
 
 9. **Verify Final File**
-   The team identifies the correct final file/version.
+   The team confirms the correct project version.
 
-10. **Calculate Submission Readiness**
-    The system calculates a readiness score.
+10. **Calculate Readiness**
+    The system calculates the current submission-readiness level.
 
 11. **Proceed to Submission**
-    Once critical issues are resolved, the team can move toward final submission.
+    Once critical issues are resolved, the team proceeds to final submission.
 
 ---
 
@@ -392,7 +414,7 @@ architecture.
                 │  • Submission Readiness    │
                 └─────────────┬──────────────┘
                               │
-                              │ HTTP API
+                              │ REST API Requests
                               ▼
                 ┌────────────────────────────┐
                 │          BACKEND           │
@@ -402,7 +424,7 @@ architecture.
                 │  • Task Logic              │
                 │  • Team Logic              │
                 │  • Checklist Logic        │
-                │  • Deadline Logic          │
+                │  • Deadline Logic         │
                 │  • Risk Engine             │
                 │  • Escalation Engine       │
                 │  • Readiness Engine        │
@@ -434,10 +456,12 @@ architecture.
 | Backend           | Node.js + Express              | REST API and application logic         |
 | Database          | Supabase PostgreSQL            | Persistent project data                |
 | File Storage      | Supabase Storage               | Project/final file storage             |
-| Risk Engine       | Backend Logic                  | Calculates project risk state          |
-| Escalation Engine | Backend Logic                  | Increases urgency of unfinished work   |
+| Risk Engine       | Backend Logic                  | Calculates project risk                |
+| Escalation Engine | Backend Logic                  | Escalates unfinished important tasks   |
 | Readiness Engine  | Backend Logic                  | Calculates submission readiness        |
 | Emergency System  | Frontend + Backend + Socket.IO | Emergency Mode and panic coordination  |
+| Version Control   | Git + GitHub                   | Source control and collaboration       |
+| Deployment        | Vercel                         | Public web deployment                  |
 
 ---
 
@@ -445,31 +469,28 @@ architecture.
 
 The Frontend communicates with the Backend through HTTP API requests.
 
-The Backend then:
+The Backend:
 
-1. validates/handles the request,
-2. applies application logic,
-3. reads or updates project data,
-4. communicates with Supabase,
-5. returns the processed result to the Frontend.
+1. receives the request,
+2. processes the application logic,
+3. reads or updates Supabase data,
+4. returns the result to the Frontend.
 
-For realtime emergency communication, Socket.IO can broadcast events to connected clients.
+Realtime emergency communication uses Socket.IO.
 
 ```text
-React
-  │
-  │ fetch / HTTP request
-  ▼
-Express API
-  │
-  ├── Controllers
-  │
-  ├── Services / Engines
-  │
-  ▼
+React Frontend
+      │
+      │ HTTP / REST
+      ▼
+Node + Express
+      │
+      ├──────────────► Risk / Escalation / Readiness Logic
+      │
+      ▼
 Supabase PostgreSQL
-  │
-  └── Persistent Data
+      │
+      └──────────────► Supabase Storage
 
 Realtime:
 Frontend ↔ Socket.IO ↔ Backend
@@ -479,9 +500,7 @@ Frontend ↔ Socket.IO ↔ Backend
 
 # 🗄️ Database Structure
 
-KUET_PARADOX uses **Supabase PostgreSQL** for persistent structured data.
-
-The database is organized around the main entities required by the application.
+KUET_PARADOX uses **Supabase PostgreSQL** for persistent structured project data.
 
 ```text
 SUPABASE DATABASE
@@ -540,26 +559,36 @@ SUPABASE DATABASE
     └── created_at
 ```
 
-## Why PostgreSQL?
+## Why Supabase?
 
-Structured project data such as tasks, team members, deadlines, checklist states, risk information, and project status naturally fit a relational database model.
+Supabase provides the PostgreSQL database layer needed for structured application data while also providing integrated file storage.
 
-Supabase provides the PostgreSQL database layer while also providing integrated file storage for project files.
+This allows the application to keep:
+
+* tasks,
+* team members,
+* checklist states,
+* deadlines,
+* risks,
+* project state,
+* and file metadata
+
+in persistent storage.
 
 ---
 
 # 📁 File Storage
 
-The application separates **structured metadata** from **actual file storage**.
+The application separates file metadata from the actual file.
 
 ```text
 Supabase PostgreSQL
         │
         └── File metadata
-             • name
-             • version
-             • uploader
-             • final status
+             • Name
+             • Version
+             • Uploader
+             • Final status
              • URL
 
 Supabase Storage
@@ -567,13 +596,13 @@ Supabase Storage
         └── Actual project files
 ```
 
-This separation keeps database records lightweight while allowing project files to be managed through storage.
+This keeps structured database records separate from uploaded project files.
 
 ---
 
 # 🔌 API Documentation
 
-KUET_PARADOX uses REST-style HTTP APIs between the Frontend and Backend.
+KUET_PARADOX uses REST-style APIs to connect the Frontend with the Backend.
 
 ## Base URL
 
@@ -583,7 +612,7 @@ KUET_PARADOX uses REST-style HTTP APIs between the Frontend and Backend.
 http://localhost:5000
 ```
 
-### Main API Prefix
+### API Prefix
 
 ```text
 /api
@@ -611,9 +640,28 @@ http://localhost:5000
 | PUT    | `/api/tasks/:id` | Update a task |
 | DELETE | `/api/tasks/:id` | Delete a task |
 
+### Task Flow
+
+```text
+React
+  │
+  │ POST /api/tasks
+  ▼
+Express
+  │
+  ▼
+Task Controller
+  │
+  ▼
+Supabase
+  │
+  ▼
+tasks table
+```
+
 ---
 
-## ☑️ Checklist API
+## ✅ Checklist API
 
 | Method | Endpoint             | Purpose                |
 | ------ | -------------------- | ---------------------- |
@@ -649,6 +697,16 @@ http://localhost:5000
 
 ---
 
+## 📈 Escalation API
+
+| Method | Endpoint          | Purpose                    |
+| ------ | ----------------- | -------------------------- |
+| GET    | `/api/escalation` | Get escalation information |
+
+The escalation logic is handled by backend services that evaluate unfinished important work as the deadline becomes more urgent.
+
+---
+
 ## 📁 File API
 
 | Method | Endpoint         | Purpose                  |
@@ -672,206 +730,134 @@ http://localhost:5000
 
 | Method | Endpoint                        | Purpose                               |
 | ------ | ------------------------------- | ------------------------------------- |
-| GET    | `/api/project/status`           | Get project submission state          |
+| GET    | `/api/project/status`           | Get current project state             |
 | POST   | `/api/project/lock-final`       | Lock the final file                   |
 | POST   | `/api/project/assign-roles`     | Assign submitter and backup submitter |
 | POST   | `/api/project/checklist/toggle` | Update project checklist state        |
 
 ---
 
-# ⚙️ Backend Structure
+# 🧠 Business Logic
 
-The backend separates routing, controllers, and business logic.
+The application contains dedicated backend services for its core decision systems.
+
+## Risk Engine
+
+The Risk Engine evaluates project conditions and produces a simple project risk state.
 
 ```text
-BACKEND
-│
-├── routes/
-│   ├── taskRoutes.js
-│   ├── teamRoutes.js
-│   ├── checklistRoutes.js
-│   ├── deadlineRoutes.js
-│   ├── riskRoutes.js
-│   ├── emergencyRoutes.js
-│   ├── fileRoutes.js
-│   └── readinessRoutes.js
-│
-├── controllers/
-│   ├── taskController.js
-│   ├── teamController.js
-│   ├── checklistController.js
-│   ├── deadlineController.js
-│   ├── riskController.js
-│   ├── emergencyController.js
-│   ├── fileController.js
-│   └── readinessController.js
-│
-├── services/
-│   ├── riskEngine.js
-│   ├── escalationEngine.js
-│   └── readinessEngine.js
-│
-├── config/
-│   └── supabase.js
-│
-├── data/
-│   └── temporaryData.js
-│
-└── server.js
+Project conditions
+       ↓
+Risk calculation
+       ↓
+SAFE / WARNING / CRITICAL
 ```
 
-This separation allows API endpoints, business logic, and database access to evolve independently.
+## Escalation Engine
 
----
-
-# 🔄 API Request Flow
-
-A normal task request follows this pattern:
+The Escalation Engine identifies important unfinished tasks and increases their urgency as the deadline becomes more critical.
 
 ```text
-USER
- │
- ▼
-REACT FRONTEND
- │
- │ GET /api/tasks
- ▼
-EXPRESS ROUTE
- │
- ▼
-TASK CONTROLLER
- │
- ▼
-SUPABASE DATABASE
- │
- │ task data
- ▼
-TASK CONTROLLER
- │
- ▼
-JSON RESPONSE
- │
- ▼
-REACT UI
+Pending important task
+       ↓
+Deadline pressure
+       ↓
+Higher urgency
 ```
 
-Example:
+## Readiness Engine
+
+The Readiness Engine combines multiple project conditions into a single submission-readiness result.
 
 ```text
-GET /api/tasks
-
-        ↓
-
-Backend retrieves tasks
-
-        ↓
-
-Supabase returns task data
-
-        ↓
-
-Backend sends JSON response
-
-        ↓
-
-Frontend displays tasks
-```
-
-For updates:
-
-```text
-User changes task
-       ↓
-PUT /api/tasks/:id
-       ↓
-Controller
-       ↓
-Supabase update
-       ↓
-Updated result
-       ↓
-Frontend refresh/update
+Tasks
+  +
+Checklist
+  +
+Final File
+  +
+Critical Issues
+      ↓
+Readiness Score
 ```
 
 ---
 
 # ⚡ Realtime Communication
 
-For emergency coordination, KUET_PARADOX uses **Socket.IO** alongside REST APIs.
+The system uses **Socket.IO** for realtime communication.
 
-REST APIs are used for persistent request/response operations.
+REST APIs are used for normal persistent operations.
 
-Socket.IO is used for realtime events such as:
-
-* panic alerts,
-* project-state updates,
-* emergency coordination.
-
-Conceptually:
+Socket.IO is used for emergency-related realtime events.
 
 ```text
 Teammate A
     │
     │ Panic Button
     ▼
-Backend / Socket.IO
+Node + Socket.IO
     │
     ├───────────────┐
     ▼               ▼
 Teammate B       Teammate C
 ```
 
-This means an urgent event does not have to wait for a normal page refresh before connected teammates are notified.
+This allows an emergency event to be communicated to connected teammates without depending entirely on manual page refresh or separate messaging.
 
 ---
 
-# 🧠 AI Usage
+# 🤖 AI Usage
 
-## Was AI used in the development process?
+## AI in the Development Process
 
-**Yes.**
+AI assistance was used during the development process for:
 
-AI assistance was used during development for:
-
-* brainstorming and refining the solution,
-* breaking down the problem statement,
-* planning system architecture,
-* generating and explaining implementation code,
-* debugging errors,
-* improving API structure,
+* brainstorming the solution,
+* exploring the problem statement,
+* designing the system architecture,
+* structuring the feature set,
+* generating implementation code,
+* debugging implementation issues,
 * improving documentation,
-* and reviewing the project workflow.
+* reviewing workflows,
+* and accelerating development under the hackathon time constraint.
 
-The team remained responsible for deciding the final system design, feature set, implementation choices, testing, and submission.
+The final implementation decisions, integration, testing, and project direction remained the responsibility of the team.
 
-## Is the application itself powered by an external AI model?
+## Is the Application Powered by an External AI API?
 
-**No external LLM API is required for the current application runtime.**
+**Not in the current runtime implementation.**
 
-KUET_PARADOX does not depend on Gemini/OpenAI/etc. to calculate its core project state.
+The application does not depend on a live Gemini/OpenAI/etc. API for its core functionality.
 
-Instead, the application uses deterministic backend logic for:
+Instead, the main intelligent behaviors are implemented through explicit backend logic:
 
-* Deadline Risk,
-* Task Escalation,
-* Submission Readiness,
-* Emergency state,
-* and project coordination.
+* Deadline Risk
+* Task Escalation
+* Submission Readiness
+* Emergency State
+* Project Coordination
 
-This design choice makes the core emergency workflow:
+This makes the core workflow:
 
 * predictable,
-* fast,
 * explainable,
-* and independent of an external AI model.
+* fast,
+* and independent of external LLM availability.
 
-## Why did we use AI during development?
+## Why Did We Use AI During Development?
 
-The problem itself involves **stress, distraction, incomplete information, and last-minute decision making**.
+The challenge involves users who may be:
 
-AI assistance helped the team rapidly explore these situations, translate the problem into actionable product features, and iterate on implementation during the limited hackathon development time.
+* stressed,
+* distracted,
+* overloaded,
+* or missing important information.
 
-However, the final application's critical decisions remain based on explicit application logic rather than unpredictable AI-generated decisions.
+AI assistance helped us rapidly translate those situations into a practical product design and iterate quickly during the limited hackathon development time.
+
+The final application itself keeps its critical workflow decisions deterministic and rule-based.
 
 ---
 
@@ -879,53 +865,40 @@ However, the final application's critical decisions remain based on explicit app
 
 ## 1. Supabase
 
-**Purpose:**
+**Used for:**
 
 * PostgreSQL database
-* Persistent project data
-* Team/member data
-* Task data
-* Checklist data
-* Deadline/risk-related data
-* Project-state data
-* File metadata
-* File storage
-
-```text
-Application
-    ↓
-Node + Express
-    ↓
-Supabase
- ┌───────────────┐
- │ PostgreSQL    │
- │ Storage       │
- └───────────────┘
-```
+* persistent project data
+* team data
+* task data
+* checklist data
+* deadline/risk data
+* project-state data
+* file metadata
+* file storage
 
 ---
 
 ## 2. Vercel
 
-**Purpose:**
+**Used for:**
 
-* Public web deployment
-* Hosting the frontend
-* Hosting/deploying application services where configured
+* public frontend deployment
+* hosting the live web application
 
-The project is available publicly through the deployed Vercel frontend.
+### Live Frontend
 
-**Live Demo:**
-
-https://forkathon2026-team-kuet-paradox.vercel.app/
+https://forkathon2026-team-kuet-paradox-7swmmqapj-tjmahir609-xyz.vercel.app
 
 ---
 
 ## 3. Socket.IO
 
-**Purpose:**
+**Used for:**
 
-Socket.IO is used as the realtime communication layer for emergency/panic events and project-state updates between connected clients and the backend.
+* realtime emergency communication
+* panic events
+* connected-client updates
 
 ---
 
@@ -938,16 +911,16 @@ Socket.IO is used as the realtime communication layer for emergency/panic events
 | Database        | Supabase PostgreSQL |
 | File Storage    | Supabase Storage    |
 | Realtime        | Socket.IO           |
-| Deployment      | Vercel              |
-| API Style       | REST                |
+| API             | REST                |
 | Language        | JavaScript          |
 | Version Control | Git + GitHub        |
+| Deployment      | Vercel              |
 
 ---
 
 # 🔐 Security & Configuration
 
-Sensitive credentials are kept outside the source code through environment variables.
+Sensitive configuration values are stored through environment variables instead of being hard-coded into application source files.
 
 Example:
 
@@ -958,13 +931,13 @@ SUPABASE_SERVICE_ROLE_KEY=...
 
 The `.env` file should never be committed to GitHub.
 
-Environment variables are used so deployment credentials and service keys do not need to appear inside the application source code.
+The Supabase service-role key must remain server-side and must never be exposed in frontend code.
 
 ---
 
 # 🧪 Testing Strategy
 
-Before final submission, the following flow should be verified:
+The complete application should be tested through the following flow:
 
 ```text
 Frontend opens
@@ -981,24 +954,24 @@ Checklist can be updated
       ↓
 Team information loads
       ↓
-Risk state loads
+Risk loads
       ↓
 Emergency actions work
       ↓
-Final file information loads
+Final-file information loads
       ↓
 Readiness score loads
       ↓
-Page refresh keeps persistent data
+Refresh page
+      ↓
+Persistent data remains available
 ```
 
-The main goal of testing is not simply to check individual buttons.
-
-It is to verify that the complete flow:
+The objective is to verify the complete:
 
 > **Frontend → Backend → Database → Frontend**
 
-works reliably.
+cycle.
 
 ---
 
@@ -1012,13 +985,7 @@ npm install
 npm run dev
 ```
 
-The Vite development server will provide a local URL such as:
-
-```text
-http://localhost:5173
-```
-
-or another available port.
+Vite will provide a local development URL.
 
 ## Backend
 
@@ -1065,15 +1032,33 @@ Forkathon2026-Team-KUET_PARADOX
 
 ---
 
-# 🚀 Why KUET_PARADOX?
+# 🚀 Deployment
 
-Most project-management systems are designed for normal working conditions.
+The frontend is deployed publicly using Vercel.
 
-KUET_PARADOX focuses on a different moment:
+### Live Demo
+
+**https://forkathon2026-team-kuet-paradox-7swmmqapj-tjmahir609-xyz.vercel.app**
+
+The source code is maintained in the GitHub repository:
+
+**https://github.com/ForkedArch/Forkathon2026-Team-KUET_PARADOX**
+
+The deployed application is intended to give judges a direct way to experience the project rather than only reviewing screenshots or source code.
+
+---
+
+# 🏆 Why KUET_PARADOX?
+
+Traditional project-management systems are usually designed for normal working conditions.
+
+KUET_PARADOX focuses on something different:
 
 > **The final five minutes.**
 
-Instead of asking the team to process more information, KUET_PARADOX tries to reduce the cognitive load by answering the most important questions immediately:
+When the deadline is close, users should not have to process more complexity.
+
+They need immediate answers:
 
 ```text
 What is done?
@@ -1085,60 +1070,37 @@ Are we ready?
 What should we do next?
 ```
 
-The system turns a chaotic final stage into a **prioritized emergency workflow**.
+KUET_PARADOX turns those questions into a single, prioritized workflow.
 
 ---
 
-# 🏆 Core Idea
-
-> **Don't make the team think more when the deadline is approaching. Make the next action obvious.**
-
-KUET_PARADOX is designed to transform:
+# 🎯 Core Idea
 
 ```text
 CONFUSION
-   ↓
+    ↓
 CLARITY
-   ↓
+    ↓
 PRIORITY
-   ↓
+    ↓
 COORDINATION
-   ↓
+    ↓
 SUBMISSION READINESS
 ```
 
+> **Don't make the team think more when the deadline is approaching. Make the next action obvious.**
+
 ---
 
-# 🌐 Live Demo
+# 🌐 Links
 
-**Frontend:**
+### Live Demo
 
-https://forkathon2026-team-kuet-paradox.vercel.app/
+https://forkathon2026-team-kuet-paradox-7swmmqapj-tjmahir609-xyz.vercel.app
 
-**GitHub:**
+### GitHub Repository
 
 https://github.com/ForkedArch/Forkathon2026-Team-KUET_PARADOX
-
----
-
-# 📌 Project Status
-
-| Area                       | Status |
-| -------------------------- | ------ |
-| Problem Definition         | ✅      |
-| Solution Design            | ✅      |
-| React Frontend             | ✅      |
-| Node/Express Backend       | ✅      |
-| REST API Structure         | ✅      |
-| Supabase Database          | ✅      |
-| File Storage               | ✅      |
-| Risk Engine                | ✅      |
-| Escalation Engine          | ✅      |
-| Readiness Engine           | ✅      |
-| Emergency System           | ✅      |
-| Realtime Communication     | ✅      |
-| GitHub Repository          | ✅      |
-| Public Frontend Deployment | ✅      |
 
 ---
 
